@@ -1,0 +1,43 @@
+.row{
+    left: 2%;
+    right: 2%;
+    top: 30%;
+    min-width: 50%;
+    min-height: 15%;
+    position: absolute;
+    border-style: solid 1px;
+    border-color: gray;
+    border-radius: 5px;
+}
+.card{
+    bottom: 2%;
+    top: 2%
+}
+.stars-outer {
+    display: inline-block;
+    position: relative;
+    font-family: FontAwesome;
+  }
+   
+  .stars-outer::before {
+    content: "\f006 \f006 \f006 \f006 \f006";
+  }
+   
+  .stars-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    
+  }
+
+  .stars-inner::before {
+    content: "\f005 \f005 \f005 \f005 \f005";
+    color: #f8ce0b;
+  }
+  @media only screen and (max-width: 575px) {
+    img{
+      height: 500px;
+    }
+  } 

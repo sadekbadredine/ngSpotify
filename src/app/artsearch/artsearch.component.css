@@ -1,0 +1,10 @@
+input{
+    left: 25%;
+    top: 50%;
+    min-width: 50%;
+    min-height: 10%;
+    position: absolute;
+    border-style: solid 1px;
+    border-color: gray;
+    border-radius: 8px;
+}

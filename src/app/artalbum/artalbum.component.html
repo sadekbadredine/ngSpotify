@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="col-xs-12">
+    <button 
+      class="btn btn-dark" 
+      type="button" 
+      (click)="goBack()">
+      <span class="text mx-auto"></span>
+      <i class="fa fa-angle-left float-right"></i>
+    </button>
+  </div>
+</div>
+<router-outlet></router-outlet>
+<div class="row artname">
+  <div class="col-xs-12">
+    <h4>{{ artistName }}</h4>
+    <h5 class="text-muted" *ngIf="artistName">Albums</h5>
+  </div>
+</div>
+<div class="row album">
+    <div class="col-sm-3"
+    *ngFor="let album of albums">
+        <div 
+            class="card text-white bg-dark mb-3">
+            <img 
+                class="card-img-top img-responsive" 
+                src="{{ album.images[1].url }}" 
+                alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">{{ album.name }}</h5>
+              <p class="card-text">
+                {{ album.release_date }}
+              </p>
+              <p class="card-text">
+                {{ album.total_tracks + ' tracks' }} 
+              </p>
+            <div 
+              class="card-footer"
+              style="cursor: pointer;"
+              (click)="goToSpotify(album.external_urls.spotify)">
+              <p>
+                Preview on Spotify
+              </p>
+            </div>
+            </div>
+          </div>
+    </div>
+    
+</div>

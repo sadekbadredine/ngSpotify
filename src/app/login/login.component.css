@@ -1,0 +1,47 @@
+button{
+    left: 25%;
+    top: 50%;
+    min-width: 50%;
+    min-height: 15%;
+    position: absolute;
+    border-style: solid 1px;
+    border-color: gray;
+    border-radius: 5px;
+}
+.text{
+    position: relative;
+    padding-top: 50%;
+    font-size:170%; 
+    color:black;
+    vertical-align: middle;
+}
+i{
+    position: relative;
+    vertical-align: middle;
+    top: 20%;
+    margin-right: 0;
+    margin-left: 0.5em;
+    font-size: 250%;
+    color:rgb(30,215,96);
+}
+@media screen and (min-width: 768px) {
+    .text{
+        font-size: 30px;
+    }
+    i{
+        font-size: 50px;
+    }
+  }
+  @media screen and (min-width: 1024px) {
+      i{
+          font-size: 50px;
+        }
+    }
+@media screen and (min-width: 2560px) {
+      .text{
+          font-size: 50px;
+    }
+      i{
+         font-size: 80px;
+      }
+    }

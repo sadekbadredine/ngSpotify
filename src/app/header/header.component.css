@@ -1,0 +1,18 @@
+/* .bg-dark{
+    background-color: transparent !important;
+} */
+.navbar{
+    background-color: rgb(168, 167, 167)!important;
+}
+.navbar-brand{
+    padding-left: 5%;
+}
+span{
+    color: black !important;
+    font-size: 150%;
+}
+@media screen and (min-width: 2560px) {
+    span{
+        font-size: 50px;
+    }
+  }
