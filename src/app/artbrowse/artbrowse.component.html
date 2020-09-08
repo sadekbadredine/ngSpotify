@@ -4,14 +4,13 @@
         <div class="card text-white bg-dark mb-3 mx-auto" style="cursor: pointer;">
             <img 
                 class="card-img-top" 
-                src="{{ artist.images[2].url }}" 
+                src="{{ artist.images[0].url }}" 
                 alt="Card image cap"
+                style="max-height: 350px;"
                 >
             <div class="card-body">
-                <h5 class="card-title">{{ artist.name }}</h5>
-                <p class="card-text">
-                    {{ artist.followers.total + ' follwers' }}
-                </p>
+                <h5>{{ artist.name }}</h5>
+                <p>{{ artist.followers.total + ' follwers' }}</p>
                 <div class="rating">
                     <div class="stars-outer">
                         <div class="stars-inner" [ngStyle]="{width: getWidth(artist.popularity)}"></div>

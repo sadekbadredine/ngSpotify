@@ -15,7 +15,7 @@ export class ArtsearchComponent implements OnInit {
   searchForm: FormGroup;
   resultStyle: string;
   resultSuccess: boolean = false;
-
+  
 
   constructor(
     private searchService: SearchService,
@@ -24,15 +24,23 @@ export class ArtsearchComponent implements OnInit {
 
   ngOnInit(): void {
     let token = localStorage.getItem('access_token');
+    let getstr = localStorage.getItem('str')
     this.searchForm = new FormGroup({
-      'search': new FormControl(null)
+      'search': new FormControl()
     })
-    if (this.resultSuccess) {} 
+    if (getstr) {
+      this.handleSearch(getstr);
+    }
   }
 
 
   onSubmit(){
-    this.searchService.searchArtist(this.search).pipe(
+    localStorage.setItem('str',this.search)
+    this.handleSearch(this.search)
+  }
+
+  private handleSearch(str: string){
+    this.searchService.searchArtist(str).pipe(
       map(resData=>{
         const artistsArray = [];
         for (const key in resData) {
@@ -53,6 +61,7 @@ export class ArtsearchComponent implements OnInit {
       }
     );
   }
+
   searchArtist() {
     if (this.search) {
       this.onSubmit();

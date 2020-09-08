@@ -26,6 +26,7 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('access_token',params.access_token);
       this.router.navigate(['artsearch']);
     }
+    localStorage.removeItem('str')
   }
 
   login(){

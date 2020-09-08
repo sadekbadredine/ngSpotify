@@ -43,9 +43,10 @@ export class AlbumsService {
             'Authorization': 'Bearer ' + this.access_token    
         });
         var params = new HttpParams();
-        params = params.append('limit','8') 
-        params = params.append('include_groups','appears_on') 
-        params = params.append('market','US') 
+        params = params.append('offset','5') 
+        params = params.append('limit','20') 
+        params = params.append('include_groups','album') 
+        params = params.append('market','ES') 
         return this.http.get(requestUrl, {
             headers: headers,
             params: params

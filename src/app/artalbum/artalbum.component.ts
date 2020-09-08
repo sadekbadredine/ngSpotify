@@ -22,9 +22,6 @@ export class ArtalbumComponent implements OnInit {
     this.artistName = this.albumsService.artistName;  
   }
 
-  goBack(){
-    this.router.navigate(['/artsearch'])
-  }
   goToSpotify(url: string){
     window.open(url)
   }

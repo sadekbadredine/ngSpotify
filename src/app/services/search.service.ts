@@ -1,5 +1,5 @@
 import { Artist } from './../shared/artist.model';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -10,6 +10,7 @@ export class SearchService {
     private requestUrl = 'https://api.spotify.com/v1/search';
     finalUrl: string;
     private access_token = localStorage.getItem('access_token');
+    searchStr = new Subject<string>();
 
     constructor(private http: HttpClient) { }
 

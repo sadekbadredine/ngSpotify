@@ -1,10 +1,10 @@
+import { SearchService } from './../services/search.service';
 import { Router } from '@angular/router';
 import { Component, OnInit, DoCheck } from '@angular/core';
 import { ArtistsService } from '../services/artists.service';
 import { AlbumsService } from '../services/albums.service';
 import { Artist } from '../shared/artist.model';
-import { map } from 'rxjs/operators';
-import { Album } from '../shared/album.model';
+
 
 @Component({
   selector: 'app-artbrowse',
@@ -17,13 +17,12 @@ export class ArtbrowseComponent implements OnInit, DoCheck {
   constructor(
     private artistService: ArtistsService,
     private albumsService: AlbumsService,
-    private router: Router
+    private router: Router,
+    private searchService: SearchService
   ) { }
 
   ngOnInit(): void {
-    this.artists = this.artistService.getArtists()
-    // console.log(this.artistService.getArtists());
-    
+    this.artists = this.artistService.getArtists() 
   }
 
   ngDoCheck(){
