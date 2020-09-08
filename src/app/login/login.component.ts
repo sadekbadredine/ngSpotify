@@ -15,13 +15,9 @@ export class LoginComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    // let hash =  window.location.href;
-    // console.log(hash);
     let params = this.alc.getHashParams();
-    // console.log(params.access_token);
-    
     if (typeof(params.access_token) == 'undefined') {
-      console.log('NO HASH YET'); 
+      return; 
     } else {
       localStorage.setItem('access_token',params.access_token);
       this.router.navigate(['artsearch']);

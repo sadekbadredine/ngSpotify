@@ -2,14 +2,15 @@ button{
     left: 2%;
     right: 2%;
     top: 10%;
-    min-width: 1%;
-    min-height: 5%;
     position: absolute;
-    border-radius: 5px;
+
 }
 i{
     font-size: 30px;
 }
+.card-img-top{
+    max-height: 200px;
+  }
 .album{
     left: 2%;
     right: 2%;

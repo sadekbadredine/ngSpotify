@@ -23,7 +23,6 @@ export class ArtsearchComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    let token = localStorage.getItem('access_token');
     let getstr = localStorage.getItem('str')
     this.searchForm = new FormGroup({
       'search': new FormControl()

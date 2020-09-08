@@ -16,10 +16,9 @@ export class AuthLoginService {
 
   private requestUrl = 'https://accounts.spotify.com/authorize';
   private client_id = '5147216b7ebb4a138d0cdaf7fa2661d0';
-  private client_secret = '003d794536304a0891f34f5ac2c61d80';
   private scopes = 'user-read-private user-read-email'
   private redirect_uri = 'http://localhost:4200/';
-  private state = '';
+
 
   constructor(private router: Router,private http: HttpClient) { }
   
@@ -70,10 +69,6 @@ export class AuthLoginService {
     localStorage.setItem(stateKey, state);
 
     window.location.assign(url);
-    // return this.http.get(url, {
-    //   responseType: 'text',
-    //   headers:headers
-    // })
   }
 
 }

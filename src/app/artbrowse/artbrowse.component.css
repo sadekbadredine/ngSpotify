@@ -13,6 +13,9 @@
     bottom: 2%;
     top: 2%
 }
+.card-img-top{
+  max-height: 200px;
+}
 .stars-outer {
     display: inline-block;
     position: relative;

@@ -1,4 +1,3 @@
-import { Router } from '@angular/router';
 import { AlbumsService } from './../services/albums.service';
 import { Component, OnInit } from '@angular/core';
 import { Album } from '../shared/album.model';
@@ -13,8 +12,7 @@ export class ArtalbumComponent implements OnInit {
   artistName: string;
 
   constructor(
-    private albumsService: AlbumsService,
-    private router: Router
+    private albumsService: AlbumsService
     ) { }
 
   ngOnInit(): void {

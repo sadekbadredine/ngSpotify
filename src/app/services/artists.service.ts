@@ -6,7 +6,6 @@ import { Subject, Subscription } from 'rxjs';
 export class ArtistsService implements OnInit{
     artistsChanged = new Subject<Artist[]>();
     artists: Artist[] = [];
-    sub: Subscription;
 
     constructor(){}
 
