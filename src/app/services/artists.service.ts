@@ -20,6 +20,5 @@ export class ArtistsService implements OnInit{
     setArtists(artists: Artist[]){
         this.artists = artists;
         this.artistsChanged.next(this.artists);
-
     }
 }

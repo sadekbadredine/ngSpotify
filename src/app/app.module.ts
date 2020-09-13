@@ -10,6 +10,8 @@ import { ArtSearchComponent } from './art-search/art-search.component';
 import { ArtAlbumComponent } from './art-album/art-album.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+import * as fromApp from './store/app.reducer'
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StoreModule.forRoot(fromApp.appRducer)
   ],
   providers: [],
   bootstrap: [AppComponent]

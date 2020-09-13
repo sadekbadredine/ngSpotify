@@ -1,6 +1,9 @@
 import { AlbumsService } from '../services/albums.service';
 import { Component, OnInit } from '@angular/core';
 import { Album } from '../shared/album.model';
+import { Store } from '@ngrx/store';
+import * as fromApp from '../store/app.reducer'
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-artalbum',
@@ -9,16 +12,18 @@ import { Album } from '../shared/album.model';
 })
 export class ArtAlbumComponent implements OnInit {
   // an array of type album to hold the list of albums
-  albums: Album[];
+  albums: Observable<{albums: Album[]}>;
   artistName: string;
 
   constructor(
-    private albumsService: AlbumsService
+    private albumsService: AlbumsService,
+    private store: Store<fromApp.AppState>
     ) { }
   
   ngOnInit(): void {
     //get the albums of the artists from the album service get method when the components initializes
-    this.albums = this.albumsService.getAlbums();
+    // this.albums = this.albumsService.getAlbums();
+    this.albums = this.store.select('albums')
     // get the name of the artist from the album service 
     this.artistName = this.albumsService.artistName;  
   }

@@ -3,6 +3,10 @@ import { Component, OnInit, DoCheck } from '@angular/core';
 import { ArtistsService } from '../services/artists.service';
 import { AlbumsService } from '../services/albums.service';
 import { Artist } from '../shared/artist.model';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import * as AlbumsActions from '../art-album/store/albums.actions'
+import * as fromApp from '../store/app.reducer'
 
 @Component({
   selector: 'app-artbrowse',
@@ -11,19 +15,25 @@ import { Artist } from '../shared/artist.model';
 })
 export class ArtBrowseComponent implements OnInit, DoCheck {
   // an array of type Artist to hold the list of artists 
-  artists: Artist[];
+  artists: Observable<{ artists: Artist[]}>;
+  // artists: Artist[]
+  
 
   constructor(
     // the needed services to use in this component
     private artistService: ArtistsService,
     private albumsService: AlbumsService,
     private router: Router,
+    private store: Store<fromApp.AppState> 
   ) { }
 
   ngOnInit(): void {
+    this.artists = this.store.select('artists')
+    // console.log(this.store.select('artists'));
     // fetch the list of artists from the artist service and assign them 
     // to the artists array when the component intializes
-    this.artists = this.artistService.getArtists();
+    // this.artists = this.artistService.getArtists();
+
   }
 
   ngDoCheck(){
@@ -31,11 +41,11 @@ export class ArtBrowseComponent implements OnInit, DoCheck {
     // subscribe to the artistsChanged Subject poperty to extract the new emitted array of type
     // Artist and overwrite the current artist list in the class whenever the component detects
     // a change 
-    this.artistService.artistsChanged.subscribe(
-      (artists: Artist[])=>{
-        this.artists = artists;
-      }
-    )
+    // this.artistService.artistsChanged.subscribe(
+    //   (artists: Artist[])=>{
+    //     this.artists = artists;
+    //   }
+    // )
   }
 
   //  Another way of assigning multi grid column class
@@ -77,7 +87,8 @@ export class ArtBrowseComponent implements OnInit, DoCheck {
           // if the array is not empty, pass it to the setAlbums function of the album service 
           // and pass the name argument of getArtist function and pass it to setArtistName function
           // in the album service and then navigate to the artalbum component with the router service
-          this.albumsService.setAlbums(albumObject.items);
+          // this.albumsService.setAlbums(albumObject.items);
+          this.store.dispatch(new AlbumsActions.SetAlbums(albumObject.items))
           this.albumsService.setArtistName(name);
           this.router.navigate(['/artalbum']);
         }

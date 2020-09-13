@@ -10,7 +10,9 @@
   <!-- loop through all the albums with ngFor and extract each iteration's values
   and print them in specified place via string interpolation
   -->
-  <div class="col-lg-3 col-md-4 col-sm-6 col-" *ngFor="let album of albums">
+  <div 
+    class="col-lg-3 col-md-4 col-sm-6 col-" 
+    *ngFor="let album of (albums | async).albums">
     <!-- make the hole card clickable with event binding to a function with passing
     the extracted url from the current iteration to that function as an argument
     -->

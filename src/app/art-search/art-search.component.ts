@@ -1,9 +1,12 @@
-import { ArtistsService } from '../services/artists.service';
 import { map } from 'rxjs/operators';
 import { SearchService } from '../services/search.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Artist } from '../shared/artist.model';
+import { Store } from '@ngrx/store';
+import * as ArtistsActions from './store/artists.actions'
+import * as fromApp from '../store/app.reducer'
+
 
 @Component({
   selector: 'app-artsearch',
@@ -23,7 +26,7 @@ export class ArtSearchComponent implements OnInit {
   constructor(
     // the neeed servies in the class
     private searchService: SearchService,
-    private artistsService: ArtistsService
+    private store: Store<fromApp.AppState>
     ) { }
 
   ngOnInit(): void {
@@ -82,7 +85,11 @@ export class ArtSearchComponent implements OnInit {
       (artists:Artist[])=>{
         // here we subscrive to the array we got from the observable earlier, and we pass it to the 
         // setArtists function in the artist service
-        this.artistsService.setArtists(artists);
+        // this.artistsService.setArtists(artists);
+        // here we wanna create a new object based on the action class and dispatch it
+        this.store.dispatch(
+          new ArtistsActions.SetArtists(artists)
+        )
         // then we set the resultSuccess to true to show the art-browse component
         this.resultSuccess = true;
         // then we change the input style to be above the art-browse component
