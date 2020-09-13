@@ -1,0 +1,36 @@
+<!-- Non bootstrap way to assign classes according to window resize event -->
+<!-- <div class="row" (window:resize)="onResize($event)"> -->
+<div class="row">
+    <div 
+    class="col-lg-3 col-md-4 col-sm-6" 
+    *ngFor="let artist of artists">
+    <!-- router outer directive to navigate using the injected router dependency -->
+        <router-outlet></router-outlet>
+        <!-- agian using event binding to excute a function to get the extracted 
+        artist id and name to be used outside of the component
+        -->
+        <div 
+            class="card text-white bg-dark mb-3 mx-auto"
+            (click)="getArtist(artist.id, artist.name)"
+            style="cursor: pointer">
+            <img 
+                class="card-img-top" 
+                src="{{ artist.images[0].url }}" 
+                alt="Card image cap"
+                >
+            <div class="card-body">
+                <p class="ch">{{ artist.name }}</p>
+                <p>{{ artist.followers.total + ' follwers' }}</p>
+                <div class="rating">
+                    <div class="stars-outer">
+                        <!-- using structural directive to dynamically assign the width of the 
+                        stars rating according to the extracted popularity value from the current 
+                        iteration with ngStyle directive
+                        -->
+                        <div class="stars-inner" [ngStyle]="{width: getWidth(artist.popularity)}"></div>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

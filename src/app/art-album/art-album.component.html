@@ -1,0 +1,30 @@
+<div class="row artname" >
+  <div class="col-xs-12">
+    <!-- print the artist name via string interpolation -->
+    <h4>{{ artistName }}</h4>
+    <h5 class="text-muted">Albums</h5>
+  </div>
+</div>
+<div class="row album" style="margin-top: 1%;">
+  <!-- make 4 rows on large screen, 3 on medium, 2 on small , 1 on xsmall-->
+  <!-- loop through all the albums with ngFor and extract each iteration's values
+  and print them in specified place via string interpolation
+  -->
+  <div class="col-lg-3 col-md-4 col-sm-6 col-" *ngFor="let album of albums">
+    <!-- make the hole card clickable with event binding to a function with passing
+    the extracted url from the current iteration to that function as an argument
+    -->
+    <div 
+      class="card text-white bg-dark mb-3"
+      (click)="goToSpotify(album.external_urls.spotify)"
+      style="cursor: pointer">
+      <img class="card-img-top img-responsive" src="{{ album.images[0].url }}" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{ album.name }}</h5>
+        <p *ngFor="let artist of album.artists">{{ artist.name }}</p>
+        <p>{{ album.release_date }}</p>
+        <p> {{ album.total_tracks + ' tracks' }}</p>
+      </div>
+    </div>
+  </div>
+</div>

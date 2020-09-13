@@ -1,16 +1,7 @@
-button{
-    left: 2%;
-    right: 2%;
-    top: 10%;
-    position: absolute;
-
-}
-i{
-    font-size: 30px;
-}
 .card-img-top{
     max-height: 200px;
-  }
+}
+
 .album{
     left: 2%;
     right: 2%;
@@ -19,13 +10,15 @@ i{
     min-height: 5%;
     position: absolute; 
 }
+
 .card-footer{
     text-align: center;
 }
+
 .artname{
     left: 5%;
     right: 2%;
     top: 18%;
     position: absolute;
-
+    margin-bottom: 2%;
 }

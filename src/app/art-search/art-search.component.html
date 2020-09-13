@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-xs-12">
+        <div class="container">
+            <!-- formGroup is directive of the reactive forms module that creates a form object
+            of the form element , ngSubmit submits the  form value when onSubmit function executes
+            -->
+            <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+                <!-- 
+                    -assigning css top poperty to the input element dynamically with ngStyle directive
+                    -formControlName is to synchronize this input element to created form object 
+                    -ngModel is a databinding mechanism to dynamically bind the content of the input 
+                    to the search property in typescript
+                    keyup executes the searchArtist fucntion whenever a keyboard key is fired
+                 -->
+                <input
+                    [ngStyle]="{top: resultStyle}"
+                    type="text" 
+                    placeholder="Search for an artist..."
+                    formControlName="search"
+                    [(ngModel)]="search"
+                    name="search"
+                    (keyup)="searchArtist()"
+                    >
+            </form>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <!-- app-artbrowse is a component selector which loads the art-browser
+            component content conditionally if the boolean resultSuccess is true with 
+            the structural directive ngIf
+        -->
+        <app-artbrowse *ngIf="resultSuccess"></app-artbrowse>
+    </div>
+</div>

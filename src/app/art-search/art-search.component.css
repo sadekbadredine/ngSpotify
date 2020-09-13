@@ -1,0 +1,19 @@
+input{
+    left: 31%;
+    min-width: 35%;
+    top: 50%;
+    min-height: 7%;
+    position: absolute;
+    border-style: solid 1px;
+    border-color: gray;
+    border-radius: 8px;
+}
+input[type="text"]::placeholder {  
+    text-align: center; 
+}
+@media only screen and (max-width: 320px){
+    input{
+        left: 17%;
+        top: 200px;
+    }
+}

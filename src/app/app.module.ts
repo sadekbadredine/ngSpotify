@@ -5,9 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
-import { ArtbrowseComponent } from './artbrowse/artbrowse.component';
-import { ArtsearchComponent } from './artsearch/artsearch.component';
-import { ArtalbumComponent } from './artalbum/artalbum.component';
+import { ArtBrowseComponent } from './art-browse/art-browse.component';
+import { ArtSearchComponent } from './art-search/art-search.component';
+import { ArtAlbumComponent } from './art-album/art-album.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -16,9 +16,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppComponent,
     HeaderComponent,
     LoginComponent,
-    ArtbrowseComponent,
-    ArtsearchComponent,
-    ArtalbumComponent
+    ArtBrowseComponent,
+    ArtSearchComponent,
+    ArtAlbumComponent,
   ],
   imports: [
     BrowserModule,

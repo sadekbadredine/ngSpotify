@@ -1,3 +1,4 @@
+// Album model is to define the returned Object from the spotify server
 export class Album{
     constructor(
         public artists:[{

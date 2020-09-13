@@ -13,7 +13,4 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  toggleCollapsed(): void {
-    this.collapsed = !this.collapsed;
-  }
 }

@@ -1,0 +1,40 @@
+1- Login Page Just has a Spotify icon visible there is
+no indicator (text) that user can press to login in
+------------------------------------------------------done
+2- Artist Search Input is too big and the text is 
+aligned at the start (sticking to the input border)
+------------------------------------------------------done
+3- In the Art Search page Cards are small and image 
+look distorted
+------------------------------------------------------done
+4- App isn’t responsiveness - Height of the card 
+differs between one another and all card stay in 
+the same row when resizing browser
+------------------------------------------------------done
+5- When clicking on Artists Search result some of 
+them don’t get me their albums (there is console 
+errors) and causes the app to freeze and stop working
+------------------------------------------------------done
+6- Some Artist don’t seem to have a picture thus 
+the card shows a broken image with makes it look 
+distorted
+
+7- artalbum page preview on spotify row is too big 
++ make the whole card clickable to instead the 
+text only
+------------------------------------------------------done
+8- Currently your components name are for example 
+artalbum with no separator 
+- It should be art-album.component.ts for example 
+fix all your components name in the app
+-------------------------------------------------------done
+9- Distinguish and Separate your application into 
+pages and components
+
+10- Add comments thru the app that explain your 
+code what is doing
+--------------------------------------------------------done
+11- [BONUS] Research and Add NGRX for your project
+
+Ziad Mogrhabi - IXTI
+01/750985 ext 109 
