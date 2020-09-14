@@ -1,75 +1,82 @@
 import { Router } from '@angular/router';
-import { Component, OnInit, DoCheck } from '@angular/core';
-import { ArtistsService } from '../services/artists.service';
+import { Component, OnInit } from '@angular/core';
 import { AlbumsService } from '../services/albums.service';
 import { Artist } from '../shared/artist.model';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import * as AlbumsActions from '../art-album/store/albums.actions'
 import * as fromApp from '../store/app.reducer'
+import { map } from 'rxjs/operators';
+import { registerLocaleData } from '@angular/common';
 
 @Component({
   selector: 'app-artbrowse',
   templateUrl: './art-browse.component.html',
   styleUrls: ['./art-browse.component.css']
 })
-export class ArtBrowseComponent implements OnInit, DoCheck {
+export class ArtBrowseComponent implements OnInit {
   // an array of type Artist to hold the list of artists 
-  artists: Observable<{ artists: Artist[]}>;
+  artists: Observable<{ artists: Artist[] }>;
   // artists: Artist[]
-  
+
 
   constructor(
     // the needed services to use in this component
-    private artistService: ArtistsService,
     private albumsService: AlbumsService,
     private router: Router,
-    private store: Store<fromApp.AppState> 
+    private store: Store<fromApp.AppState>
   ) { }
 
   ngOnInit(): void {
     this.artists = this.store.select('artists')
-    // console.log(this.store.select('artists'));
-    // fetch the list of artists from the artist service and assign them 
-    // to the artists array when the component intializes
-    // this.artists = this.artistService.getArtists();
-
-  }
-
-  ngDoCheck(){
-    
-    // subscribe to the artistsChanged Subject poperty to extract the new emitted array of type
-    // Artist and overwrite the current artist list in the class whenever the component detects
-    // a change 
-    // this.artistService.artistsChanged.subscribe(
-    //   (artists: Artist[])=>{
-    //     this.artists = artists;
-    //   }
+    // this.store.select('artists').pipe(
+    //   map(stateData => {
+    //     return stateData.artists.map(
+    //       artist => {
+    //         return {
+    //           ...artist, 
+    //         }
+    //       })
+    //   })
     // )
+    //   .subscribe(
+    //     newArray => {
+          
+    //     }
+    //   )
+    // fetch the artists from the artists reducers in root store 
   }
 
-  //  Another way of assigning multi grid column class
-  // onResize(event:any) {
-  //   let width = event.target.innerWidth;
-  //   this.screenWidth = width;
-  // }
-  // getClass(){
-  //   if (this.screenWidth >= 992) {
-  //     return 'col-lg-3'
-  //   }
-  //   if (this.screenWidth >= 768) {
-  //     return 'col-md-4'
-  //   }
-  //   if (this.screenWidth >= 576) {
-  //     return 'col-sm-6'
-  //   }
-  //   if (this.screenWidth < 576) {
-  //     return 'col-xs-12'
-  //   }
-  // }
+  getUrl(artist: Artist){
+    if (!artist.images[0]){
+      return 'https://www.capefearhabitat.org/wp-content/plugins/learnpress/assets/images/no-image.png'
+    } else {
+      return artist.images[0].url
+    }
+  }
 
-  getWidth(width: number){
-    return width+'%';
+  //   let array = artistsArray[0].items;
+  //   for (let index = 0; index < array.length; index++) {
+  //   const element = array[index];
+  //   console.log(element.images);
+  //   if (element.images.length == 0) {
+  //     console.log(index);
+  //   }
+  // }
+  // const array = stateData.artists
+  //       for (let index = 0; index < array.length; index++) {
+  //       const element = array[index];
+  //       // console.log(element.images[0]);
+  //       if (!element.images[0].url) {
+  //         element.images[0].url = 
+  //         'https://www.capefearhabitat.org/wp-content/plugins/learnpress/assets/images/no-image.png';        
+  //         // return element.images[0].url;
+  //         }
+  //         return element.images[0]       
+  //       }
+  //       // return array
+  getWidth(width: number) {
+    return width + '%';
     // returns a percentage to the css width property on the html element that holds 
     // the ngStyle directive
   }
@@ -78,13 +85,14 @@ export class ArtBrowseComponent implements OnInit, DoCheck {
     // pass the id of the artist to the artistAlbum Get method of the album service and subscribe
     // to it and extract the returned Jalbum object
     this.albumsService.artistAlbums(id).subscribe(
-      (albumObject: any)=>{
+      (albumObject: any) => {
         // check if the item array of the album object has no elements and alert the user with 
         // the proper message
-        if (albumObject.items.length == 0){
+        if (albumObject.items.length == 0) {
           window.alert('this artist has no albums');
         } else {
-          // if the array is not empty, pass it to the setAlbums function of the album service 
+          // if the array is not empty, dispatch set album action in the root store in albums reducer
+          // and pass the array to the setAlbums function al Albums Actions in the art-album store
           // and pass the name argument of getArtist function and pass it to setArtistName function
           // in the album service and then navigate to the artalbum component with the router service
           // this.albumsService.setAlbums(albumObject.items);
@@ -94,7 +102,7 @@ export class ArtBrowseComponent implements OnInit, DoCheck {
         }
       },
       // if the Get method has an error then log it to the console
-      error=>{
+      error => {
         console.log(error);
       }
     );

@@ -83,9 +83,8 @@ export class ArtSearchComponent implements OnInit {
       })
     ).subscribe(
       (artists:Artist[])=>{
-        // here we subscrive to the array we got from the observable earlier, and we pass it to the 
-        // setArtists function in the artist service
-        // this.artistsService.setArtists(artists);
+        // here we subscribe to the array we got from the observable earlier, and we pass it to the 
+        // SetArtists function to dispatch the action of setting an artist
         // here we wanna create a new object based on the action class and dispatch it
         this.store.dispatch(
           new ArtistsActions.SetArtists(artists)
