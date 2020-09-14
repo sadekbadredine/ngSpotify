@@ -4,6 +4,7 @@
     <div 
     class="col-lg-3 col-md-4 col-sm-6" 
     *ngFor="let artist of (artists | async).artists">
+    <!-- here we use async pipe on the artists observable to return the array of artists -->
     <!-- router outer directive to navigate using the injected router dependency -->
         <router-outlet></router-outlet>
         <!-- agian using event binding to excute a function to get the extracted 
@@ -19,7 +20,7 @@
                 alt="Card image cap"
                 >
             <div class="card-body">
-                <p class="ch">{{ artist.name }}</p>
+                <p>{{ artist.name }}</p>
                 <p>{{ artist.followers.total + ' follwers' }}</p>
                 <div class="rating">
                     <div class="stars-outer">

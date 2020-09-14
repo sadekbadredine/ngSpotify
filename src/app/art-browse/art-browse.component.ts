@@ -6,8 +6,6 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import * as AlbumsActions from '../art-album/store/albums.actions'
 import * as fromApp from '../store/app.reducer'
-import { map } from 'rxjs/operators';
-import { registerLocaleData } from '@angular/common';
 
 @Component({
   selector: 'app-artbrowse',
@@ -15,11 +13,10 @@ import { registerLocaleData } from '@angular/common';
   styleUrls: ['./art-browse.component.css']
 })
 export class ArtBrowseComponent implements OnInit {
-  // an array of type Artist to hold the list of artists 
+  // an observable of type artist which return the array of artists when we use async pipe on in in the 
+  // html filr
   artists: Observable<{ artists: Artist[] }>;
-  // artists: Artist[]
-
-
+  
   constructor(
     // the needed services to use in this component
     private albumsService: AlbumsService,
@@ -29,21 +26,6 @@ export class ArtBrowseComponent implements OnInit {
 
   ngOnInit(): void {
     this.artists = this.store.select('artists')
-    // this.store.select('artists').pipe(
-    //   map(stateData => {
-    //     return stateData.artists.map(
-    //       artist => {
-    //         return {
-    //           ...artist, 
-    //         }
-    //       })
-    //   })
-    // )
-    //   .subscribe(
-    //     newArray => {
-          
-    //     }
-    //   )
     // fetch the artists from the artists reducers in root store 
   }
 
@@ -55,26 +37,6 @@ export class ArtBrowseComponent implements OnInit {
     }
   }
 
-  //   let array = artistsArray[0].items;
-  //   for (let index = 0; index < array.length; index++) {
-  //   const element = array[index];
-  //   console.log(element.images);
-  //   if (element.images.length == 0) {
-  //     console.log(index);
-  //   }
-  // }
-  // const array = stateData.artists
-  //       for (let index = 0; index < array.length; index++) {
-  //       const element = array[index];
-  //       // console.log(element.images[0]);
-  //       if (!element.images[0].url) {
-  //         element.images[0].url = 
-  //         'https://www.capefearhabitat.org/wp-content/plugins/learnpress/assets/images/no-image.png';        
-  //         // return element.images[0].url;
-  //         }
-  //         return element.images[0]       
-  //       }
-  //       // return array
   getWidth(width: number) {
     return width + '%';
     // returns a percentage to the css width property on the html element that holds 
