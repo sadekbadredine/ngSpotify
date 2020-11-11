@@ -11,7 +11,7 @@ export class AuthLoginService {
   // scopes derived from spotify web API
   private scopes = 'user-read-private user-read-email';
   // redirect_uri is my local host path where I want the server to redirect to
-  private redirect_uri = 'http://localhost:4200/';
+  private redirect_uri = environment.redirectURI;
 
   constructor(private http: HttpClient) {}
   // generating a random string for the state of the request in its params and it gets as parameters
@@ -49,8 +49,8 @@ export class AuthLoginService {
     // created two variables that holds the decoding symbols
     var e,
       r = /([^&#;=]+)=?([^&;]*)/g,
-      // get the url of the window strating from position 23 where the params start
-      q = window.location.href.substring(23);
+      // get the url of the window strating from position 33 where the params start
+      q = window.location.href.substring(33);
     // while loop starts where the params start, then searches for a match of the symbol in the
     // specified string and returns an array of results and then decode the symbole and then stores
     // result in hashParams
@@ -82,3 +82,5 @@ export class AuthLoginService {
     window.location.assign(url);
   }
 }
+// https://ngspotify-8a5ff.web.app/#access_token=BQCP7dc-v-ttAGV2r5-PRI5LtIp7d_7lX10YIag_mis1l650rxKk3ex5a8jWK7-vaoxBRU3jmlqFD4PV4QAhuPQzSRT-CclgC0UDhnOWW9NBs2b9SJ6RN5JXoqRFExNTPVFcFRGDqhTv0_BFHFJRGjva1dlgfnUGCLh2G7V6YnNLhkg&token_type=Bearer&expires_in=3600&state=2C8n41wgU85odMYs
+// http://localhost:4200/#access_token=BQCP7dc-v-ttAGV2r5-PRI5LtIp7d_7lX10YIag_mis1l650rxKk3ex5a8jWK7-vaoxBRU3jmlqFD4PV4QAhuPQzSRT-CclgC0UDhnOWW9NBs2b9SJ6RN5JXoqRFExNTPVFcFRGDqhTv0_BFHFJRGjva1dlgfnUGCLh2G7V6YnNLhkg&token_type=Bearer&expires_in=3600&state=2C8n41wgU85odMYs

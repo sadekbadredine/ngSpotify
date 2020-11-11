@@ -1,34 +1,35 @@
-button{
-    left: 0%;
-    top: 50%;
-    min-width: 50%;
-    min-height: 15%;
-    position: absolute;
-    border-style: solid 1px;
-    border-color: gray;
-    border-radius: 5px;
+button {
+  left: 0%;
+  top: 50%;
+  min-width: 50%;
+  min-height: 15%;
+  position: absolute;
+  border-style: solid 1px;
+  border-color: gray;
+  border-radius: 5px;
 }
-i{
-    position: absolute;
-    left: 45%;
-    top: 50%;
-    /* vertical-align: middle; */
-    /* text-align: center; */
-    /* top: 20%; */
-    font-size: 550%;
-    color:rgb(30,215,96);
-    cursor: pointer;
+i {
+  position: absolute;
+  left: 45%;
+  top: 50%;
+  /* vertical-align: middle; */
+  /* text-align: center; */
+  /* top: 20%; */
+  font-size: 550%;
+  /* color:rgb(30,215,96); */
+  color: rgb(30, 25, 96);
+  cursor: pointer;
 }
-i:hover{
-    color:black
+i:hover {
+  color: black;
 }
 @media only screen and (min-width: 768px) {
-    i{
-        font-size: 550%
-    }
+  i {
+    font-size: 550%;
   }
+}
 @media only screen and (min-width: 1024px) {
-    i{
-        font-size: 550%
-    }
+  i {
+    font-size: 550%;
   }
+}
